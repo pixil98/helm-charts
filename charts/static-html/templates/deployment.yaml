@@ -32,7 +32,7 @@ spec:
         - name: load-html
           image: alpine:latest
           command: [ "/bin/sh", "-c" ]
-          args: [ "apk update; apk add --upgrade git; git clone {{ .Values.html.gitRepo }} /html" ]
+          args: [ "apk update; apk add --upgrade git ssh; git clone {{ .Values.html.gitRepo }} /html" ]
           volumeMounts:
             - mountPath: /html
               name: html

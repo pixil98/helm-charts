@@ -61,9 +61,9 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
-            - mountPath: /usr/share/nginx/html
-              name: html
-            - name: config-volume
+            - name: html
+              mountPath: /usr/share/nginx/html
+            - name: config
               mountPath: /etc/nginx/conf.d/website.conf
               subPath: website.conf
       volumes:

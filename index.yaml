@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  static-html:
+  - apiVersion: v2
+    appVersion: 1.21.4
+    created: "2021-12-24T05:27:04.951677409Z"
+    description: A Helm chart for Kubernetes
+    digest: 01bd8d5cd4fa952010252e3684db7455ad68593cec82922d6991b0fe91670bc3
+    name: static-html
+    type: application
+    urls:
+    - https://github.com/pixil98/helm-charts/releases/download/static-html-0.1.0/static-html-0.1.0.tgz
+    version: 0.1.0
+generated: "2021-12-24T05:27:04.951683309Z"

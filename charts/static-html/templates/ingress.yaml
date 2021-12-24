@@ -1,6 +1,7 @@
 {{- if .Values.ingress.enabled -}}
 {{- $fullName := include "static-html.fullname" . -}}
-{{- $svcPort := .Values.service.port -}}
+{{- $svcHttpPort := .Values.service.ports.http -}}
+{{- $svcHttpsPort := .Values.service.ports.https -}}
 {{- if and .Values.ingress.className (not (semverCompare ">=1.18-0" .Capabilities.KubeVersion.GitVersion)) }}
   {{- if not (hasKey .Values.ingress.annotations "kubernetes.io/ingress.class") }}
   {{- $_ := set .Values.ingress.annotations "kubernetes.io/ingress.class" .Values.ingress.className}}
@@ -51,10 +52,10 @@ spec:
               service:
                 name: {{ $fullName }}
                 port:
-                  number: {{ $svcPort }}
+                  number: {{ $svcHttpPort }}
               {{- else }}
               serviceName: {{ $fullName }}
-              servicePort: {{ $svcPort }}
+              servicePort: {{ $svcHttpPort }}
               {{- end }}
           {{- end }}
     {{- end }}

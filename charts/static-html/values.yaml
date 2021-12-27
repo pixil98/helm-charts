@@ -83,10 +83,11 @@ tolerations: []
 
 affinity: {}
 
-html:
-  # Specifies whether html should be synced on pod init
-  sync: true
-  # The git repository to sync from
-  gitRepo: git@github.com:user/repo.git
-  # Secret containing the deploy key for git
-  deploykey: git-deploy-key
+# Specifies whether html should be synced from git
+gitSync: true
+# The git repository to sync
+gitRepo: git@github.com:user/repo.git
+# the git branch to sync
+gitBranch: main
+# Secret containing the deploy key for git
+deploykey: git-deploy-key

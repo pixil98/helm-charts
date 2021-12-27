@@ -58,7 +58,7 @@ spec:
               subPath: website.conf
         {{- if .Values.gitSync }}
         - name: git-sync
-          image: k8s.gcr.io/git-sync:3.3.5
+          image: k8s.gcr.io/git-sync:v3.3.5
           args: 
             - --ssh
             - --repo={{ .Values.gitRepo }}

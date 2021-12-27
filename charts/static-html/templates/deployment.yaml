@@ -31,7 +31,7 @@ spec:
       initContainers:
         - name: load-html
           image: alpine:latest
-          command: [ "/bin/sh" ]
+          command: [ "sleep 90000" ]
           #command: [ "/bin/sh", "-c" ]
           #args: [ "apk update; apk add --upgrade git openssh-client; git clone {{ .Values.html.gitRepo }} /html" ]
           volumeMounts:

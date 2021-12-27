@@ -32,10 +32,15 @@ spec:
         - name: load-html
           image: alpine:latest
           command: [ "/bin/sh", "-c" ]
-          args: [ "apk update; apk add --upgrade git openssh; git clone {{ .Values.html.gitRepo }} /html" ]
+          args: [ "apk update; apk add --upgrade git openssh-client; git clone {{ .Values.html.gitRepo }} /html" ]
           volumeMounts:
             - mountPath: /html
               name: html
+            - mountPath: /deploykey
+              name: ssh-deploy-key
+          env:
+            - name: GIT_SSH_COMMAND
+              value: "ssh -i /deploykey"
       {{- end }}
       containers:
         - name: {{ .Chart.Name }}
@@ -72,6 +77,10 @@ spec:
         - name: config
           configMap:
             name: {{ include "static-html.fullname" . }}
+        - name: ssh-deploy-key
+          secret:
+            secretName: {{ .Values.html.deploykey }}
+            defaultMode: 256
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

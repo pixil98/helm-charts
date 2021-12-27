@@ -88,3 +88,5 @@ html:
   sync: true
   # The git repository to sync from
   gitRepo: git@github.com:user/repo.git
+  # Secret containing the deploy key for git
+  deploykey: git-deploy-key

@@ -59,13 +59,14 @@ spec:
         {{- if .Values.gitSync }}
         - name: git-sync
           image: k8s.gcr.io/git-sync/git-sync:v3.3.5
-          args: 
-            - --ssh
-            - --repo={{ .Values.gitRepo }}
-            - --branch={{ .Values.gitBranch }}
-            - --depth=1
-            - --wait=360
-            - --root=/html
+          command: [ "/bin/sh -c sleep 6000" ]
+          #args: 
+          #  - --ssh
+          #  - --repo={{ .Values.gitRepo }}
+          #  - --branch={{ .Values.gitBranch }}
+          #  - --depth=1
+          #  - --wait=360
+          #  - --root=/html
           volumeMounts:
             - mountPath: /html
               name: www-data

@@ -25,8 +25,9 @@ serviceAccount:
 
 podAnnotations: {}
 
-podSecurityContext: {}
-  # fsGroup: 2000
+podSecurityContext:
+  # Set to git-sync user
+  fsGroup: 65533
 
 securityContext: {}
   # capabilities:

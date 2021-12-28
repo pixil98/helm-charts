@@ -78,8 +78,6 @@ spec:
           securityContext:
             runAsUser: 65533 # git-sync user
         {{- end }}
-      securityContext:
-        fsGroup: 65533 # to make SSH key readable
       volumes:
         - name: www-data
           emptyDir: {}

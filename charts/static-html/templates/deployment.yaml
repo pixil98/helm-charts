@@ -60,8 +60,9 @@ spec:
         {{- if .Values.gitSync }}
         - name: git-sync
           image: k8s.gcr.io/git-sync/git-sync:v3.3.5
-          command: [ "/bin/sh -c sleep 6000" ]
-          #args: 
+          command: [ "/bin/sh -c --" ]
+          args: 
+            - while true; do sleep 30; done;
           #  - --ssh
           #  - --repo={{ .Values.gitRepo }}
           #  - --branch={{ .Values.gitBranch }}
@@ -69,11 +70,16 @@ spec:
           #  - --wait=360
           #  - --root=/html
           volumeMounts:
-            - mountPath: /html
-              name: www-data
-            - mountPath: /etc/git-secret
-              name: ssh-deploy-key
+            - name: www-data
+              mountPath: /html  
+            - name: ssh-deploy-key
+              mountPath: /etc/git-secret
+              readOnly: true
+          securityContext:
+            runAsUser: 65533 # git-sync user
         {{- end }}
+      securityContext:
+        fsGroup: 65533 # to make SSH key readable
       volumes:
         - name: www-data
           emptyDir: {}

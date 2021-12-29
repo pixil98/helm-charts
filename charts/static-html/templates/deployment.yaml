@@ -27,6 +27,28 @@ spec:
       serviceAccountName: {{ include "static-html.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers:
+        {{- if .Values.gitSync }}
+        - name: git-init
+          image: k8s.gcr.io/git-sync/git-sync:v3.3.5
+          args: 
+            - -ssh
+            - -repo={{ .Values.gitRepo }}
+            - -branch={{ .Values.gitBranch }}
+            - -depth=1
+            - -wait=360
+            - -root=/html
+            - -dest=current
+            - -one-time
+          volumeMounts:
+            - name: www-data
+              mountPath: /html  
+            - name: ssh-deploy-key
+              mountPath: /etc/git-secret
+              readOnly: true
+          securityContext:
+            runAsUser: 65533 # git-sync user
+        {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -63,6 +85,7 @@ spec:
             - -depth=1
             - -wait=360
             - -root=/html
+            - -dest=current
           volumeMounts:
             - name: www-data
               mountPath: /html  

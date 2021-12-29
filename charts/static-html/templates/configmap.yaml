@@ -6,4 +6,4 @@ metadata:
     {{- include "static-html.labels" . | nindent 4 }}
 data:
   website.conf: |-
-    {{ .Files.Get "config/envoy.conf" | nindent 4 }}
+    {{ .Files.Get "config/website.conf" | nindent 4 }}

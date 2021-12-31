@@ -31,7 +31,7 @@ spec:
         {{- range .Values.ingress.hosts }}
         - {{ . | quote }}
         {{- end }}
-      secretName: {{ $fullname }}-tls
+      secretName: {{ $fullName }}-tls
     {{- end }}
   rules:
     {{- range .Values.ingress.hosts }}

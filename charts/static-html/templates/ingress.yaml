@@ -32,7 +32,6 @@ spec:
         - {{ . | quote }}
         {{- end }}
       secretName: {{ $fullName }}-tls
-    {{- end }}
   rules:
     {{- range .Values.ingress.hosts }}
     - host: {{ .host | quote }}
@@ -52,6 +51,5 @@ spec:
               serviceName: {{ $fullName }}
               servicePort: {{ $port }}
               {{- end }}
-          {{- end }}
     {{- end }}
 {{- end }}

@@ -34,7 +34,7 @@ spec:
       secretName: {{ $fullName }}-tls
   rules:
     {{- range .Values.ingress.hosts }}
-    - host: {{ .host | quote }}
+    - host: {{ . | quote }}
       http:
         paths:
           - path: /

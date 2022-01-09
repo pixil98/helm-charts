@@ -3,6 +3,16 @@ entries:
   static-html:
   - apiVersion: v2
     appVersion: 1.21.4
+    created: "2022-01-09T07:16:41.276273985Z"
+    description: A Helm chart for hosting static html stored in a git repository
+    digest: 564b547832f7306ebe52b44ad8f2264a925d9188b4d34f17528928bb62dc813a
+    name: static-html
+    type: application
+    urls:
+    - https://github.com/pixil98/helm-charts/releases/download/static-html-0.2.0/static-html-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 1.21.4
     created: "2021-12-31T06:04:50.806198006Z"
     description: A Helm chart for hosting static html stored in a git repository
     digest: f2dd9aa9e46d7a98463482631d6c8f906f45d988560ba808ac16cc517a0e2975
@@ -281,4 +291,4 @@ entries:
     urls:
     - https://github.com/pixil98/helm-charts/releases/download/static-html-0.1.0/static-html-0.1.0.tgz
     version: 0.1.0
-generated: "2021-12-31T06:04:50.806955161Z"
+generated: "2022-01-09T07:16:41.276469684Z"

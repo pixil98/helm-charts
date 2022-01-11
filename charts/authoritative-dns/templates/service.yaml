@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "authoritative-dns.fullname" . }}
+  labels:
+    {{- include "authoritative-dns.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: 53
+      protocol: TCP
+      name: dns-tcp
+    - port: {{ .Values.service.port }}
+      targetPort: 53
+      protocol: UDP
+      name: dns-udp
+  selector:
+    {{- include "authoritative-dns.selectorLabels" . | nindent 4 }}

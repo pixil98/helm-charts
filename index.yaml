@@ -1,5 +1,16 @@
 apiVersion: v1
 entries:
+  authoritative-dns:
+  - apiVersion: v2
+    appVersion: "9.16"
+    created: "2022-01-11T03:39:27.889379166Z"
+    description: A Helm chart for hosting an authoritative dns server
+    digest: 74ae608642f8aa429604604682bae3d0b7457bf1d959928a96faae33a61679d0
+    name: authoritative-dns
+    type: application
+    urls:
+    - https://github.com/pixil98/helm-charts/releases/download/authoritative-dns-0.1.1/authoritative-dns-0.1.1.tgz
+    version: 0.1.1
   static-html:
   - apiVersion: v2
     appVersion: 1.21.4
@@ -291,4 +302,4 @@ entries:
     urls:
     - https://github.com/pixil98/helm-charts/releases/download/static-html-0.1.0/static-html-0.1.0.tgz
     version: 0.1.0
-generated: "2022-01-09T07:16:41.276469684Z"
+generated: "2022-01-11T03:39:27.889649969Z"

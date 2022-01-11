@@ -75,9 +75,9 @@ spec:
         - name: bind-zone-config
           projected:
             sources:
-              {{- range $key, $value := .Values.dns }}
+              {{- range .Values.dns }}
               - configMap:
-                {{ $key }}: {{ $value.zone }}
+                {{ .name }}: {{ .zone }}
               {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:

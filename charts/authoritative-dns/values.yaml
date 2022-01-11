@@ -66,5 +66,5 @@ tolerations: []
 affinity: {}
 
 dns:
-  # example.com:
+  # - name: example.com
   #   zone: example-com-zone-configmap
